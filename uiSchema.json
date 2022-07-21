@@ -1,0 +1,16 @@
+{
+  "spec": {
+    "ui:widget": "hidden"
+  },
+  "content": {
+    "kind": {
+      "ui:widget": "hidden"
+    }
+  },
+  "agreement": {
+    "ui:widget": "hidden"
+  },
+  "votes": {
+    "ui:widget": "hidden"
+  }
+}
