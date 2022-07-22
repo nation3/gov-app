@@ -9,17 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nation3/gov-specs": "^1.0.0-beta6",
     "@rjsf/core": "^4.2.2",
+    "daisyui": "^2.19.1",
     "next": "12.2.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "@types/react-syntax-highlighter": "^15.5.3",
+    "autoprefixer": "^10.4.7",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6",
     "typescript": "4.7.4"
   }
 }

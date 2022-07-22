@@ -1,16 +1,94 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.field {
+  @apply py-2;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+input.form-control {
+  @apply input input-bordered w-full;
 }
 
-* {
-  box-sizing: border-box;
+select.form-control {
+  @apply select select-bordered w-full;
+}
+
+.form-group legend {
+  @apply text-xl;
+}
+
+.array-item {
+  @apply flex flex-row gap-2;
+}
+
+.array-item .col-xs-9 {
+  @apply flex-1;
+}
+
+.btn-group {
+  @apply mt-2;
+}
+
+.array-item .btn-group {
+  @apply gap-2;
+}
+
+button.btn-add {
+  @apply flex-none float-right !important;
+  @apply w-12 btn btn-circle btn-success text-white;
+}
+
+button.array-item-remove {
+  @apply flex-none !important;
+  @apply w-12 btn btn-circle btn-error text-white;
+}
+
+button.array-item-move-up, button.array-item-move-down {
+  @apply flex-none !important;
+  @apply flex-none w-12 btn btn-circle btn-outline;
+}
+
+i.glyphicon.glyphicon-plus:before {
+  content: "+";
+  @apply not-italic text-2xl normal-case;
+}
+
+i.glyphicon.glyphicon-remove:before {
+  content: "x";
+  @apply not-italic text-base;
+}
+
+i.glyphicon.glyphicon-arrow-up:before {
+  content: "↑";
+  @apply not-italic text-xl;
+}
+
+i.glyphicon.glyphicon-arrow-down:before {
+  content: "↓";
+  @apply not-italic text-xl;
+}
+
+label {
+  @apply flex flex-row align-middle gap-2;
+}
+
+label.control-label {
+  @apply text-lg font-bold;
+}
+
+input[type="checkbox"] {
+  @apply checkbox;
+}
+
+button[type="submit"] {
+  @apply btn btn-primary w-full;
+}
+
+.hidden {
+  @apply invisible w-0 h-0;
+}
+
+.form-group {
+  @apply my-2;
 }

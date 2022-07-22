@@ -1,16 +1,45 @@
 {
-  "spec": {
-    "ui:widget": "hidden"
+  "ui:options": {
+    "submitButtonOptions": {
+      "submitText": "Validate"
+    }
   },
   "content": {
     "kind": {
       "ui:widget": "hidden"
+    },
+    "title": {
+      "classNames": "text-xl"
+    },
+    "ui:order": ["statement", "discussion", "content", "*"],
+    "transfers": {
+      "items": {
+        "ui:order": ["from", "recipient", "token", "amount", "content", "*"],
+        "chainId": {
+          "ui:widget": "hidden"
+        },
+        "reimbursement": {
+          "ui:widget": "hidden"
+        }
+      }
+    },
+    "calls": {
+      "items": {
+        "ui:order": ["from", "to", "method", "parameters", "value", "*"],
+        "chainId": {
+          "ui:widget": "hidden"
+        }
+      }
     }
+  },
+  "spec": {
+    "ui:widget": "hidden"
   },
   "agreement": {
     "ui:widget": "hidden"
   },
   "votes": {
     "ui:widget": "hidden"
-  }
+  },
+  "ui:order": ["id", "discussion", "content", "*"]
 }
