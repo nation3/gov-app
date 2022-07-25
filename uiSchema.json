@@ -28,6 +28,9 @@
         "ui:order": ["from", "to", "method", "parameters", "value", "*"],
         "chainId": {
           "ui:widget": "hidden"
+        },
+        "from": {
+          "ui:widget": "hidden"
         }
       }
     }
