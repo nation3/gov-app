@@ -1,5 +1,5 @@
 {
-  "name": "proposal-builder",
+  "name": "gov-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nation3/gov-specs": "^1.0.0-beta6",
+    "@nation3/gov-specs": "^1.0.0-beta7",
     "@rjsf/core": "^4.2.2",
     "daisyui": "^2.19.1",
     "next": "12.2.2",

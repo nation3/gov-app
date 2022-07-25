@@ -22,7 +22,7 @@ select.form-control {
   @apply flex flex-row gap-2;
 }
 
-.array-item .col-xs-9 {
+.array-item .col-xs-9, .array-item .col-xs-12 {
   @apply flex-1;
 }
 

@@ -4,9 +4,8 @@ import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import json from 'react-syntax-highlighter/dist/cjs/languages/hljs/json'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
-// import { v1 } from '@nation3/gov-specs'
-import v1 from '../../gov/specs/N3GOV-v1.json'
-import uiSchema from '../uiSchema.json'
+import { v1 } from '@nation3/gov-specs'
+import uiSchema from './uiSchema.json'
 
 import { useState, useEffect } from 'react'
 
