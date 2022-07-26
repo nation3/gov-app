@@ -1,3 +1,4 @@
+// @ts-ignore
 import fetchMeta from 'fetch-meta-tags'
 
 const fetchProposal = async (id: number, retrieveMetadata?: boolean) => {
