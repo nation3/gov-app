@@ -68,6 +68,7 @@ export async function getStaticProps() {
 
   return {
     props: { proposals: proposals.reverse() },
+    revalidate: 60 * 5,
   }
 }
 

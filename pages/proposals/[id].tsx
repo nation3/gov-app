@@ -241,6 +241,7 @@ export async function getStaticProps({ params }: any) {
 
   return {
     props: { proposal },
+    revalidate: 60 * 5,
   }
 }
 
