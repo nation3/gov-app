@@ -7,8 +7,13 @@ const Proposals: NextPage = ({ proposals }) => {
   return (
     <div className="hero">
       <div className="hero-content flex flex-col">
-        <h1 className="text-3xl text-left w-full">Proposals</h1>
-        <div className="flex flex-row flex-wrap gap-8">
+        <div className="flex-1 flex flex-row justify-between w-full p-4">
+          <h1 className="text-3xl text-left w-full">Proposals</h1>
+          <Link href="/proposals/create">
+            <a className="btn btn-primary">Create a proposal</a>
+          </Link>
+        </div>
+        <div className="flex flex-row flex-wrap justify-center gap-8">
           {proposals.map((proposal) => (
             <Link href={`/proposals/${proposal.id}`}>
               <div className="card w-96 bg-base-100 shadow-lg cursor-pointer transition hover:scale-105">
