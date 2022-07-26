@@ -15,7 +15,7 @@ const Proposals: NextPage = ({ proposals }) => {
         </div>
         <div className="flex flex-row flex-wrap justify-center gap-8">
           {proposals.map((proposal) => (
-            <Link href={`/proposals/${proposal.id}`}>
+            <Link href={`/proposals/${proposal.id}`} key={proposal.id}>
               <div className="card w-96 bg-base-100 shadow-lg cursor-pointer transition hover:scale-105">
                 <div className="card-body">
                   <div className="flex flex-row flex-wrap gap-2">

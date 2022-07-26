@@ -10,6 +10,7 @@ const etherscanLink = (address: string, alias?: string) => {
       className="link link-primary"
       target="_blank"
       href={`https://etherscan.io/address/${address}`}
+      rel="noreferrer"
     >
       {alias ? alias : address}
     </a>
@@ -33,6 +34,7 @@ const renderExpense = (transfer: any, index: number) => {
           className="link link-primary flex flex-row"
           target="_blank"
           href={transfer.tokenInfo?.link}
+          rel="noreferrer"
         >
           <img
             src={transfer.tokenInfo?.icon}
@@ -178,6 +180,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
                               className="link link-primary"
                               href={vote.uri}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
                             </a>
@@ -198,6 +201,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
                   className="link link-primary"
                   href={proposal.discussion}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Read more
                 </a>
