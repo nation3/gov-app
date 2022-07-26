@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 
 SyntaxHighlighter.registerLanguage('json', json)
 
-const Home: NextPage = () => {
+const CreateProposals: NextPage = () => {
   const [proposalDraft, setProposalDraft] = useState({})
 
   useEffect(() => {
@@ -56,6 +56,4 @@ const Home: NextPage = () => {
   )
 }
 
-// https://api.gitrows.com/@github/nation3/governance/proposals/N3GOV-1.json
-
-export default Home
+export default CreateProposals

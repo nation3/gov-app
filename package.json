@@ -11,11 +11,15 @@
   "dependencies": {
     "@nation3/gov-specs": "^1.0.0-beta7",
     "@rjsf/core": "^4.2.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "daisyui": "^2.19.1",
+    "ethers": "^5.6.9",
+    "fetch-meta-tags": "^1.0.10",
     "next": "12.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "wagmi": "^0.5.12"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
