@@ -123,95 +123,103 @@ const Proposal: NextPage = ({ proposal }: any) => {
             ← All proposals
           </h3>
         </Link>
-        <div className="card max-w-5xl bg-base-100 shadow-lg">
-          <div className="card-body">
-            <div className="flex flex-row flex-wrap gap-2">
-              <div className="badge badge-primary">{proposal.content.kind}</div>
-              {proposal.approved === true ? (
-                <div className="badge badge-outline badge-success">
-                  Approved
+        {proposal?.content && (
+          <div className="card max-w-5xl bg-base-100 shadow-lg">
+            <div className="card-body">
+              <div className="flex flex-row flex-wrap gap-2">
+                <div className="badge badge-primary">
+                  {proposal.content.kind}
                 </div>
-              ) : (
-                proposal.approved === false && (
-                  <div className="badge badge-outline badge-error">
-                    Rejected
+                {proposal.approved === true ? (
+                  <div className="badge badge-outline badge-success">
+                    Approved
                   </div>
-                )
-              )}
-
-              {proposal.enacted === true ? (
-                <div className="badge badge-outline badge-success">Enacted</div>
-              ) : (
-                proposal.enacted === false && (
-                  <div className="badge badge-outline badge-warning">
-                    Pending enactment
-                  </div>
-                )
-              )}
-            </div>
-            <h2 className="card-title mb-4">
-              #{proposal.id} {proposal.discussionMetadata.title}
-            </h2>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                {/*@ts-ignore*/}
-                {proposalComponents(proposal)[proposal.content.kind]}
-                {proposal.votes && proposal.votes[0] && (
-                  <>
-                    <h3 className="text-lg font-bold mt-4">Winning choices</h3>
-                    {proposal.votes[0].winningChoices.map(
-                      (choice: string, i: number) => (
-                        <>
-                          {i > 0 && ', '}
-                          {choice}
-                        </>
-                      )
-                    )}
-                  </>
+                ) : (
+                  proposal.approved === false && (
+                    <div className="badge badge-outline badge-error">
+                      Rejected
+                    </div>
+                  )
                 )}
 
+                {proposal.enacted === true ? (
+                  <div className="badge badge-outline badge-success">
+                    Enacted
+                  </div>
+                ) : (
+                  proposal.enacted === false && (
+                    <div className="badge badge-outline badge-warning">
+                      Pending enactment
+                    </div>
+                  )
+                )}
+              </div>
+              <h2 className="card-title mb-4">
+                #{proposal.id} {proposal.discussionMetadata.title}
+              </h2>
+
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  {proposal.votes && (
+                  {/*@ts-ignore*/}
+                  {proposalComponents(proposal)[proposal.content.kind]}
+                  {proposal.votes && proposal.votes[0] && (
                     <>
-                      <h3 className="text-lg font-bold mt-4">Votes</h3>
-                      <p>
-                        {proposal.votes.map((vote: any, i: number) => (
+                      <h3 className="text-lg font-bold mt-4">
+                        Winning choices
+                      </h3>
+                      {proposal.votes[0].winningChoices.map(
+                        (choice: string, i: number) => (
                           <>
                             {i > 0 && ', '}
-                            <a
-                              className="link link-primary"
-                              href={vote.uri}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
-                            </a>
+                            {choice}
                           </>
-                        ))}
-                      </p>
+                        )
+                      )}
                     </>
                   )}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Discussion</h3>
-                <p className="line-clamp-8">
-                  {proposal.discussionMetadata.description}
-                </p>
 
-                <a
-                  className="link link-primary"
-                  href={proposal.discussion}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Read more
-                </a>
+                  <div>
+                    {proposal.votes && (
+                      <>
+                        <h3 className="text-lg font-bold mt-4">Votes</h3>
+                        <p>
+                          {proposal.votes.map((vote: any, i: number) => (
+                            <>
+                              {i > 0 && ', '}
+                              <a
+                                className="link link-primary"
+                                href={vote.uri}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
+                              </a>
+                            </>
+                          ))}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">Discussion</h3>
+                  <p className="line-clamp-8">
+                    {proposal.discussionMetadata.description}
+                  </p>
+
+                  <a
+                    className="link link-primary"
+                    href={proposal.discussion}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Read more
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
