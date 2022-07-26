@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { fetchProposals } from '../../lib/proposals'
 
-const Proposals: NextPage = ({ proposals }) => {
+const Proposals: NextPage = ({ proposals }: any) => {
   return (
     <div className="hero">
       <div className="hero-content flex flex-col">
@@ -14,7 +14,7 @@ const Proposals: NextPage = ({ proposals }) => {
           </Link>
         </div>
         <div className="flex flex-row flex-wrap justify-center gap-8">
-          {proposals.map((proposal) => (
+          {proposals.map((proposal: any) => (
             <Link href={`/proposals/${proposal.id}`} key={proposal.id}>
               <div className="card w-96 bg-base-100 shadow-lg cursor-pointer transition hover:scale-105">
                 <div className="card-body">

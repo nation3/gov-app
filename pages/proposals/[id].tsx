@@ -4,7 +4,7 @@ import { fetchProposal, fetchProposals } from '../../lib/proposals'
 import { fetchTokenInfo } from '../../lib/tokens'
 import type { v1 } from '@nation3/gov-specs'
 
-const etherscanLink = (address: string, alias?: string) => {
+const etherscanLink = (address: string | any, alias?: string) => {
   return (
     <a
       className="link link-primary"
@@ -26,6 +26,7 @@ const renderExpense = (transfer: any, index: number) => {
   return (
     <>
       <h3 className="text-lg">#{index}</h3>
+      {/*@ts-ignore*/}
       <p>From: {etherscanLink(transfer.from, agents[transfer.from])}</p>
       <p>To: {etherscanLink(transfer.recipient)}</p>
       <div className="flex flex-row gap-1">
@@ -54,6 +55,7 @@ const renderContractCall = (call: any, index: number) => {
   return (
     <>
       <h3 className="text-lg">#{index}</h3>
+      {/*@ts-ignore*/}
       <p>From: {etherscanLink(call.from, agents[call.from])}</p>
       <p>Contract: {etherscanLink(call.to)}</p>
       <p>Method: {call.method}</p>
@@ -61,7 +63,7 @@ const renderContractCall = (call: any, index: number) => {
         Parameters:
         <br />
         {call.parameters &&
-          call.parameters.map((parameter, i) => (
+          call.parameters.map((parameter: any, i: number) => (
             <>
               {i > 0 && <br />}
               {parameter}
@@ -153,6 +155,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
+                {/*@ts-ignore*/}
                 {proposalComponents(proposal)[proposal.content.kind]}
                 {proposal.votes && proposal.votes[0] && (
                   <>
