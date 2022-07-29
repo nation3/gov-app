@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.field {
+/*.field {
   @apply py-2;
 }
 
@@ -91,4 +91,4 @@ button[type="submit"] {
 
 .form-group {
   @apply my-2;
-}
+}*/

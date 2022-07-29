@@ -32,6 +32,9 @@
       }
     }
   },
+  "id": {
+    "ui:widget": "hidden"
+  },
   "spec": {
     "ui:widget": "hidden"
   },

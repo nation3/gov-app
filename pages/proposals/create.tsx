@@ -8,6 +8,10 @@ import Link from 'next/link'
 import { v1 } from '@nation3/gov-specs'
 import uiSchema from './uiSchema.json'
 
+let schema = v1
+/** An ID is required for a proposal to be valid, but the ID will only be assigned once merged into the repo */
+schema.properties.id.default = 1337
+
 import { useState, useEffect } from 'react'
 
 SyntaxHighlighter.registerLanguage('json', json)
@@ -40,7 +44,7 @@ const CreateProposals: NextPage = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Form
-                schema={v1}
+                schema={schema}
                 uiSchema={uiSchema}
                 formData={proposalDraft}
                 onChange={(e) => setProposalDraft(e.formData)}
