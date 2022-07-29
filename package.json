@@ -12,7 +12,6 @@
     "@nation3/gov-specs": "^1.0.0-beta7",
     "@rjsf/core": "^4.2.2",
     "@tailwindcss/line-clamp": "^0.4.0",
-    "daisyui": "^2.19.1",
     "ethers": "^5.6.9",
     "fetch-meta-tags": "^1.0.10",
     "flowbite": "^1.5.1",

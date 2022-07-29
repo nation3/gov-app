@@ -11,7 +11,7 @@ import ProposalBadges from '../../components/ProposalBadges'
 const etherscanLink = (address: string | any, alias?: string) => {
   return (
     <a
-      className="link link-primary"
+      className="text-n3blue hover:underline"
       target="_blank"
       href={`https://etherscan.io/address/${address}`}
       rel="noreferrer"
@@ -36,7 +36,7 @@ const renderExpense = (transfer: any, index: number) => {
       <div className="flex flex-row gap-1">
         <span>Token:</span>
         <a
-          className="link link-primary flex flex-row"
+          className="text-n3blue hover:underline flex flex-row"
           target="_blank"
           href={transfer.tokenInfo?.link}
           rel="noreferrer"
@@ -123,7 +123,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
     <div className="flex justify-center items-center h-screen">
       <div className="flex flex-col w-full xl:max-w-5xl">
         <Link href="/proposals">
-          <h3 className="link link-primary link-hover text-left w-full ml-2 mb-2 cursor-pointer text-blue-500">
+          <h3 className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
             ← All proposals
           </h3>
         </Link>
@@ -164,7 +164,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
                             <>
                               {i > 0 && ', '}
                               <a
-                                className="link link-primary"
+                                className="text-n3blue hover:underline"
                                 href={vote.uri}
                                 target="_blank"
                                 rel="noreferrer"
@@ -185,12 +185,12 @@ const Proposal: NextPage = ({ proposal }: any) => {
                   </p>
 
                   <a
-                    className="link link-primary"
+                    className="text-n3blue hover:underline"
                     href={proposal.discussion}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Read more
+                    Read more →
                   </a>
                 </div>
               </div>

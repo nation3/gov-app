@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 label {
-  @apply mt-2 block text-sm font-medium text-gray-900 dark:text-gray-300 !important;
+  @apply mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300 !important;
 }
 
 .field-description {
@@ -30,25 +30,28 @@ input, select {
   @apply bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 !important;
 }
 
-
-/*.field {
-  @apply py-2;
+.field {
+  @apply mb-1;
 }
 
-input.form-control {
+/*input.form-control {
   @apply input input-bordered w-full;
 }
 
 select.form-control {
   @apply select select-bordered w-full;
-}
+}*/
 
 .form-group legend {
-  @apply text-xl;
+  @apply text-sm mt-4;
 }
 
 .array-item {
-  @apply flex flex-row gap-2;
+  @apply flex flex-row gap-2 items-start;
+}
+
+.array-item-list .col-xs-3 {
+  @apply mt-2;
 }
 
 .array-item .col-xs-9, .array-item .col-xs-12 {
@@ -56,7 +59,7 @@ select.form-control {
 }
 
 .btn-group {
-  @apply mt-2;
+  @apply h-11;
 }
 
 .array-item .btn-group {
@@ -64,38 +67,54 @@ select.form-control {
 }
 
 button.btn-add {
-  @apply flex-none float-right !important;
-  @apply w-12 btn btn-circle btn-success text-white;
+  @apply float-right !important;
+  @apply w-11 h-11 text-white text-center text-lime-500 border border-lime-500 hover:bg-lime-500 hover:text-white rounded-full px-3;
 }
 
 button.array-item-remove {
   @apply flex-none !important;
-  @apply w-12 btn btn-circle btn-error text-white;
+  @apply w-11 h-11 text-white text-center text-red-500 border border-red-500 hover:bg-red-500 hover:text-white rounded-full px-2;
 }
 
 button.array-item-move-up, button.array-item-move-down {
-  @apply flex-none !important;
-  @apply flex-none w-12 btn btn-circle btn-outline;
+  @apply py-2 px-4 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700;
+}
+
+button.array-item-move-up {
+  @apply rounded-l-lg;
+}
+
+button.array-item-move-down {
+  @apply -ml-2;
+  @apply rounded-r-lg;
+}
+
+button.array-item-move-up, button.array-item-move-down {
+  @apply flex-none w-12;
+}
+
+i.glyphicon.glyphicon-plus {
+  @apply text-center align-middle;
+}
+
+i.glyphicon {
+  @apply not-italic text-xl;
 }
 
 i.glyphicon.glyphicon-plus:before {
   content: "+";
-  @apply not-italic text-2xl normal-case;
 }
 
 i.glyphicon.glyphicon-remove:before {
-  content: "x";
-  @apply not-italic text-base;
+  content: "-";
 }
 
 i.glyphicon.glyphicon-arrow-up:before {
   content: "↑";
-  @apply not-italic text-xl;
 }
 
 i.glyphicon.glyphicon-arrow-down:before {
   content: "↓";
-  @apply not-italic text-xl;
 }
 
 label {
@@ -106,18 +125,10 @@ label.control-label {
   @apply text-lg font-bold;
 }
 
-input[type="checkbox"] {
-  @apply checkbox;
-}
-
-button[type="submit"] {
-  @apply btn btn-primary w-full;
-}
-
 .hidden {
   @apply invisible w-0 h-0;
 }
 
 .form-group {
-  @apply my-2;
-}*/
+  @apply mb-2;
+}
