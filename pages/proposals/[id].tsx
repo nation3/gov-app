@@ -4,6 +4,10 @@ import { fetchProposal, fetchProposals } from '../../lib/proposals'
 import { fetchTokenInfo } from '../../lib/tokens'
 import type { v1 } from '@nation3/gov-specs'
 
+import { Button, Card, Badge } from 'flowbite-react'
+
+import ProposalBadges from '../../components/ProposalBadges'
+
 const etherscanLink = (address: string | any, alias?: string) => {
   return (
     <a
@@ -64,10 +68,10 @@ const renderContractCall = (call: any, index: number) => {
         <br />
         {call.parameters &&
           call.parameters.map((parameter: any, i: number) => (
-            <>
+            <span key={i}>
               {i > 0 && <br />}
               {parameter}
-            </>
+            </span>
           ))}
       </p>
       {call.value && <p>ETH value: {call.value}</p>}
@@ -116,45 +120,18 @@ const proposalComponents = (proposal: any) => {
 
 const Proposal: NextPage = ({ proposal }: any) => {
   return (
-    <div className="hero h-full">
-      <div className="hero-content flex flex-col">
+    <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col w-full xl:max-w-5xl">
         <Link href="/proposals">
-          <h3 className="link link-primary link-hover text-left w-full">
+          <h3 className="link link-primary link-hover text-left w-full ml-2 mb-2 cursor-pointer text-blue-500">
             ← All proposals
           </h3>
         </Link>
         {proposal?.content && (
-          <div className="card max-w-5xl bg-base-100 shadow-lg">
+          <Card>
             <div className="card-body">
-              <div className="flex flex-row flex-wrap gap-2">
-                <div className="badge badge-primary">
-                  {proposal.content.kind}
-                </div>
-                {proposal.approved === true ? (
-                  <div className="badge badge-outline badge-success">
-                    Approved
-                  </div>
-                ) : (
-                  proposal.approved === false && (
-                    <div className="badge badge-outline badge-error">
-                      Rejected
-                    </div>
-                  )
-                )}
-
-                {proposal.enacted === true ? (
-                  <div className="badge badge-outline badge-success">
-                    Enacted
-                  </div>
-                ) : (
-                  proposal.enacted === false && (
-                    <div className="badge badge-outline badge-warning">
-                      Pending enactment
-                    </div>
-                  )
-                )}
-              </div>
-              <h2 className="card-title mb-4">
+              <ProposalBadges proposal={proposal} />
+              <h2 className="text-2xl font-bold my-4">
                 #{proposal.id} {proposal.discussionMetadata.title}
               </h2>
 
@@ -218,7 +195,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
         )}
       </div>
     </div>
@@ -227,6 +204,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
 
 export async function getStaticProps({ params }: any) {
   const proposal = await fetchProposal(params.id, true)
+
   if (
     proposal.content.kind === 'expense' ||
     proposal.content.kind === 'custodial-treasury-management'
