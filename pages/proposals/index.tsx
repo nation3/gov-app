@@ -11,9 +11,11 @@ const Proposals: NextPage = ({ proposals }: any) => {
     <div className="m-auto max-w-3xl xl:max-w-6xl p-4 md:p-0 mb-4">
       <div className="flex flex-col">
         <div className="flex-1 flex flex-row justify-between w-full my-8">
-          <h1 className="text-3xl text-left">Proposals</h1>
+          <h1 className="text-3xl text-left font-display">Proposals</h1>
           <Link href="/proposals/create">
-            <Button>Create a proposal</Button>
+            <Button>
+              <span className="font-display">Create a proposal</span>
+            </Button>
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">

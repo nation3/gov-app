@@ -129,7 +129,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
         </Link>
         {proposal?.content && (
           <Card>
-            <div className="card-body">
+            <div className="card-body break-words">
               <ProposalBadges proposal={proposal} />
               <h2 className="text-2xl font-bold my-4">
                 #{proposal.id} {proposal.discussionMetadata.title}
