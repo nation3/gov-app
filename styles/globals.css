@@ -43,14 +43,6 @@ input, select {
   @apply mb-1;
 }
 
-/*input.form-control {
-  @apply input input-bordered w-full;
-}
-
-select.form-control {
-  @apply select select-bordered w-full;
-}*/
-
 .form-group legend {
   @apply text-sm mt-4;
 }
