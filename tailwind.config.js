@@ -3,11 +3,12 @@ module.exports = {
     './pages/index.tsx',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     fontFamily: {
-      display: ['Poppins', 'sans-serif'],
-      body: ['UniversalSans', 'sans-serif'],
+      display: ['Bossa', 'sans-serif'],
+      body: ['Inter', 'sans-serif'],
     },
     fontWeight: {
       light: 200,
@@ -27,20 +28,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require('daisyui'), require('@tailwindcss/line-clamp')],
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: '#69C9FF',
-          secondary: '#88F1BB',
-          accent: '#88F1BB',
-          neutral: '#3d4451',
-          'primary-content': '#ffffff',
-          'base-100': '#ffffff',
-          'base-content': '#224059',
-        },
-      },
-    ],
-  },
+  plugins: [
+    require('flowbite/plugin'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
+  ],
 }

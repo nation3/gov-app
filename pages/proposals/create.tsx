@@ -4,11 +4,14 @@ import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import json from 'react-syntax-highlighter/dist/cjs/languages/hljs/json'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Link from 'next/link'
-
 import { v1 } from '@nation3/gov-specs'
 import uiSchema from './uiSchema.json'
-
 import { useState, useEffect } from 'react'
+import { Button, Card, Badge, Label } from 'flowbite-react'
+
+let schema = v1
+/** An ID is required for a proposal to be valid, but the ID will only be assigned once merged into the repo */
+schema.properties.id.default = 1337
 
 SyntaxHighlighter.registerLanguage('json', json)
 
@@ -26,38 +29,39 @@ const CreateProposals: NextPage = () => {
   }, [proposalDraft])
 
   return (
-    <div className="hero">
-      <div className="hero-content flex flex-col">
+    <div className="flex flex-col w-full xl:max-w-5xl">
+      <div className="flex flex-row justify-between">
         <Link href="/proposals">
-          <h3 className="link link-primary link-hover text-left w-full">
+          <a className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
             ← All proposals
-          </h3>
+          </a>
         </Link>
-        <div className="card w-full xl:max-w-5xl shadow-xl">
-          <div className="card-body">
-            <div className="card-title text-2xl">
-              Create a governance proposal
+        <Link href="/proposals/process">
+          <a className="mr-2 mb-2 text-n3blue hover:underline">
+            <div className="flex flex-row items-center gap-1">
+              <span>Governance process</span>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Form
-                schema={v1}
-                uiSchema={uiSchema}
-                formData={proposalDraft}
-                onChange={(e) => setProposalDraft(e.formData)}
-                action="#"
-              />
-              <div>
-                <div className="card-title text-lg mt-8 mb-4">
-                  Proposal output
-                </div>
-                <SyntaxHighlighter language="javascript" style={tomorrow}>
-                  {JSON.stringify(proposalDraft, null, 2)}
-                </SyntaxHighlighter>
-              </div>
-            </div>
+          </a>
+        </Link>
+      </div>
+      <Card>
+        <h3 className="font-bold text-2xl">Create a governance proposal</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Form
+            schema={schema}
+            uiSchema={uiSchema}
+            formData={proposalDraft}
+            onChange={(e) => setProposalDraft(e.formData)}
+            action="#"
+          />
+          <div>
+            <Label htmlFor="small" value="Proposal output" />
+            <SyntaxHighlighter language="javascript" style={tomorrow}>
+              {JSON.stringify(proposalDraft, null, 2)}
+            </SyntaxHighlighter>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

@@ -3,11 +3,15 @@ import Link from 'next/link'
 import { fetchProposal, fetchProposals } from '../../lib/proposals'
 import { fetchTokenInfo } from '../../lib/tokens'
 import type { v1 } from '@nation3/gov-specs'
+import { Button, Card, Badge } from 'flowbite-react'
+import { ExternalLinkIcon } from '@heroicons/react/outline'
+
+import ProposalBadges from '../../components/ProposalBadges'
 
 const etherscanLink = (address: string | any, alias?: string) => {
   return (
     <a
-      className="link link-primary"
+      className="text-n3blue hover:underline"
       target="_blank"
       href={`https://etherscan.io/address/${address}`}
       rel="noreferrer"
@@ -32,7 +36,7 @@ const renderExpense = (transfer: any, index: number) => {
       <div className="flex flex-row gap-1">
         <span>Token:</span>
         <a
-          className="link link-primary flex flex-row"
+          className="text-n3blue hover:underline flex flex-row"
           target="_blank"
           href={transfer.tokenInfo?.link}
           rel="noreferrer"
@@ -64,10 +68,10 @@ const renderContractCall = (call: any, index: number) => {
         <br />
         {call.parameters &&
           call.parameters.map((parameter: any, i: number) => (
-            <>
+            <span key={i}>
               {i > 0 && <br />}
               {parameter}
-            </>
+            </span>
           ))}
       </p>
       {call.value && <p>ETH value: {call.value}</p>}
@@ -116,117 +120,90 @@ const proposalComponents = (proposal: any) => {
 
 const Proposal: NextPage = ({ proposal }: any) => {
   return (
-    <div className="hero h-full">
-      <div className="hero-content flex flex-col">
-        <Link href="/proposals">
-          <h3 className="link link-primary link-hover text-left w-full">
-            ← All proposals
-          </h3>
-        </Link>
-        {proposal?.content && (
-          <div className="card max-w-5xl bg-base-100 shadow-lg">
-            <div className="card-body">
-              <div className="flex flex-row flex-wrap gap-2">
-                <div className="badge badge-primary">
-                  {proposal.content.kind}
-                </div>
-                {proposal.approved === true ? (
-                  <div className="badge badge-outline badge-success">
-                    Approved
-                  </div>
-                ) : (
-                  proposal.approved === false && (
-                    <div className="badge badge-outline badge-error">
-                      Rejected
-                    </div>
-                  )
+    <div className="flex flex-col w-full xl:max-w-5xl">
+      <Link href="/proposals">
+        <h3 className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
+          ← All proposals
+        </h3>
+      </Link>
+      {proposal?.content && (
+        <Card>
+          <div className="break-words">
+            <ProposalBadges proposal={proposal} />
+            <h2 className="text-2xl font-bold my-4">
+              #{proposal.id} {proposal.discussionMetadata.title}
+            </h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div>
+                {/*@ts-ignore*/}
+                {proposalComponents(proposal)[proposal.content.kind]}
+                {proposal.votes && proposal.votes[0] && (
+                  <>
+                    <h3 className="text-lg font-bold mt-4">Winning choices</h3>
+                    {proposal.votes[0].winningChoices.map(
+                      (choice: string, i: number) => (
+                        <>
+                          {i > 0 && ', '}
+                          {choice}
+                        </>
+                      )
+                    )}
+                  </>
                 )}
 
-                {proposal.enacted === true ? (
-                  <div className="badge badge-outline badge-success">
-                    Enacted
-                  </div>
-                ) : (
-                  proposal.enacted === false && (
-                    <div className="badge badge-outline badge-warning">
-                      Pending enactment
-                    </div>
-                  )
-                )}
-              </div>
-              <h2 className="card-title mb-4">
-                #{proposal.id} {proposal.discussionMetadata.title}
-              </h2>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
-                  {/*@ts-ignore*/}
-                  {proposalComponents(proposal)[proposal.content.kind]}
-                  {proposal.votes && proposal.votes[0] && (
+                  {proposal.votes && (
                     <>
-                      <h3 className="text-lg font-bold mt-4">
-                        Winning choices
-                      </h3>
-                      {proposal.votes[0].winningChoices.map(
-                        (choice: string, i: number) => (
+                      <h3 className="text-lg font-bold mt-4">Votes</h3>
+                      <p>
+                        {proposal.votes.map((vote: any, i: number) => (
                           <>
                             {i > 0 && ', '}
-                            {choice}
+                            <a
+                              className="text-n3blue hover:underline"
+                              href={vote.uri}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
+                            </a>
                           </>
-                        )
-                      )}
+                        ))}
+                      </p>
                     </>
                   )}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold">Discussion</h3>
+                <p className="line-clamp-8 mb-1">
+                  {proposal.discussionMetadata.description}
+                </p>
 
-                  <div>
-                    {proposal.votes && (
-                      <>
-                        <h3 className="text-lg font-bold mt-4">Votes</h3>
-                        <p>
-                          {proposal.votes.map((vote: any, i: number) => (
-                            <>
-                              {i > 0 && ', '}
-                              <a
-                                className="link link-primary"
-                                href={vote.uri}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
-                              </a>
-                            </>
-                          ))}
-                        </p>
-                      </>
-                    )}
+                <a
+                  className="text-n3blue hover:underline"
+                  href={proposal.discussion}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex flex-row items-center gap-1">
+                    <span>Read more</span>
+                    <ExternalLinkIcon className="w-5 h-5" />
                   </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold">Discussion</h3>
-                  <p className="line-clamp-8">
-                    {proposal.discussionMetadata.description}
-                  </p>
-
-                  <a
-                    className="link link-primary"
-                    href={proposal.discussion}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Read more
-                  </a>
-                </div>
+                </a>
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </Card>
+      )}
     </div>
   )
 }
 
 export async function getStaticProps({ params }: any) {
   const proposal = await fetchProposal(params.id, true)
+
   if (
     proposal.content.kind === 'expense' ||
     proposal.content.kind === 'custodial-treasury-management'
