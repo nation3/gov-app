@@ -2,25 +2,6 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Flowbite } from 'flowbite-react'
 
-import {
-  WagmiConfig,
-  createClient,
-  defaultChains,
-  configureChains,
-} from 'wagmi'
-
-import { publicProvider } from 'wagmi/providers/public'
-
-const { provider, webSocketProvider } = configureChains(defaultChains, [
-  publicProvider(),
-])
-
-const client = createClient({
-  autoConnect: true,
-  provider,
-  webSocketProvider,
-})
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Flowbite
@@ -39,15 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         },
       }}
     >
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-      />
-      <WagmiConfig client={client}>
-        <div className="flex justify-center items-center py-8">
-          <Component {...pageProps} />
-        </div>
-      </WagmiConfig>
+      <div className="flex justify-center items-center py-8">
+        <Component {...pageProps} />
+      </div>
     </Flowbite>
   )
 }

@@ -5,7 +5,8 @@ import markdownIt from 'markdown-it'
 import { useState, useEffect } from 'react'
 import { ExternalLinkIcon } from '@heroicons/react/outline'
 
-const renderMarkdown = async (markdown) => {
+const renderMarkdown = async (markdown: string) => {
+  // @ts-ignore
   const MarkdownItMermaid = (await import('@md-reader/markdown-it-mermaid'))
     .default
 
@@ -20,7 +21,7 @@ const Process: NextPage = ({ markdown }: any) => {
     renderMarkdown(markdown).then((htmlContent) => {
       setHTML(htmlContent)
     })
-  }, [])
+  })
 
   return (
     <div className="flex flex-col w-full xl:max-w-5xl">

@@ -18,7 +18,7 @@ const useTokenInfo = (address: string) => {
     fetchTokenInfo(address).then((tokenRes) => {
       setTokenInfo(tokenRes)
     })
-  }, [])
+  })
   return tokenInfo
 }
 
