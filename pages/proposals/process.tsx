@@ -21,7 +21,7 @@ const Process: NextPage = ({ markdown }: any) => {
     renderMarkdown(markdown).then((htmlContent) => {
       setHTML(htmlContent)
     })
-  })
+  }, [markdown])
 
   return (
     <div className="flex flex-col w-full xl:max-w-5xl">
