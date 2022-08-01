@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { fetchProposal, fetchProposals } from '../../lib/proposals'
 import { fetchTokenInfo } from '../../lib/tokens'
 import type { v1 } from '@nation3/gov-specs'
-
 import { Button, Card, Badge } from 'flowbite-react'
+import { ExternalLinkIcon } from '@heroicons/react/outline'
 
 import ProposalBadges from '../../components/ProposalBadges'
 
@@ -120,84 +120,83 @@ const proposalComponents = (proposal: any) => {
 
 const Proposal: NextPage = ({ proposal }: any) => {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="flex flex-col w-full xl:max-w-5xl">
-        <Link href="/proposals">
-          <h3 className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
-            ← All proposals
-          </h3>
-        </Link>
-        {proposal?.content && (
-          <Card>
-            <div className="card-body break-words">
-              <ProposalBadges proposal={proposal} />
-              <h2 className="text-2xl font-bold my-4">
-                #{proposal.id} {proposal.discussionMetadata.title}
-              </h2>
+    <div className="flex flex-col w-full xl:max-w-5xl">
+      <Link href="/proposals">
+        <h3 className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
+          ← All proposals
+        </h3>
+      </Link>
+      {proposal?.content && (
+        <Card>
+          <div className="break-words">
+            <ProposalBadges proposal={proposal} />
+            <h2 className="text-2xl font-bold my-4">
+              #{proposal.id} {proposal.discussionMetadata.title}
+            </h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div>
+                {/*@ts-ignore*/}
+                {proposalComponents(proposal)[proposal.content.kind]}
+                {proposal.votes && proposal.votes[0] && (
+                  <>
+                    <h3 className="text-lg font-bold mt-4">Winning choices</h3>
+                    {proposal.votes[0].winningChoices.map(
+                      (choice: string, i: number) => (
+                        <>
+                          {i > 0 && ', '}
+                          {choice}
+                        </>
+                      )
+                    )}
+                  </>
+                )}
+
                 <div>
-                  {/*@ts-ignore*/}
-                  {proposalComponents(proposal)[proposal.content.kind]}
-                  {proposal.votes && proposal.votes[0] && (
+                  {proposal.votes && (
                     <>
-                      <h3 className="text-lg font-bold mt-4">
-                        Winning choices
-                      </h3>
-                      {proposal.votes[0].winningChoices.map(
-                        (choice: string, i: number) => (
+                      <h3 className="text-lg font-bold mt-4">Votes</h3>
+                      <p>
+                        {proposal.votes.map((vote: any, i: number) => (
                           <>
                             {i > 0 && ', '}
-                            {choice}
+                            <a
+                              className="text-n3blue hover:underline"
+                              href={vote.uri}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
+                            </a>
                           </>
-                        )
-                      )}
+                        ))}
+                      </p>
                     </>
                   )}
-
-                  <div>
-                    {proposal.votes && (
-                      <>
-                        <h3 className="text-lg font-bold mt-4">Votes</h3>
-                        <p>
-                          {proposal.votes.map((vote: any, i: number) => (
-                            <>
-                              {i > 0 && ', '}
-                              <a
-                                className="text-n3blue hover:underline"
-                                href={vote.uri}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {i === 0 ? 'Snapshot vote' : 'Aragon vote'}
-                              </a>
-                            </>
-                          ))}
-                        </p>
-                      </>
-                    )}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold">Discussion</h3>
-                  <p className="line-clamp-8">
-                    {proposal.discussionMetadata.description}
-                  </p>
-
-                  <a
-                    className="text-n3blue hover:underline"
-                    href={proposal.discussion}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Read more →
-                  </a>
                 </div>
               </div>
+              <div>
+                <h3 className="text-lg font-bold">Discussion</h3>
+                <p className="line-clamp-8 mb-1">
+                  {proposal.discussionMetadata.description}
+                </p>
+
+                <a
+                  className="text-n3blue hover:underline"
+                  href={proposal.discussion}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="flex flex-row items-center gap-1">
+                    <span>Read more</span>
+                    <ExternalLinkIcon className="w-5 h-5" />
+                  </div>
+                </a>
+              </div>
             </div>
-          </Card>
-        )}
-      </div>
+          </div>
+        </Card>
+      )}
     </div>
   )
 }

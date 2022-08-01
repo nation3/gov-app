@@ -10,7 +10,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
   return (
     <div className="m-auto max-w-3xl xl:max-w-6xl p-4 md:p-0 mb-4">
       <div className="flex flex-col">
-        <div className="flex-1 flex flex-row justify-between w-full my-8">
+        <div className="flex-1 flex flex-row justify-between w-full mb-8">
           <h1 className="text-3xl text-left font-display">Proposals</h1>
           <Link href="/proposals/create">
             <Button>
