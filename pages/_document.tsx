@@ -20,7 +20,7 @@ class WebsiteDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <body>
+        <body className="bg-white dark:bg-slate-800 dark:text-white">
           <Main />
           <NextScript />
         </body>

@@ -56,7 +56,11 @@ const CreateProposals: NextPage = () => {
           />
           <div>
             <Label htmlFor="small" value="Proposal output" />
-            <SyntaxHighlighter language="javascript" style={tomorrow}>
+            <SyntaxHighlighter
+              language="javascript"
+              style={tomorrow}
+              className="rounded-lg"
+            >
               {JSON.stringify(proposalDraft, null, 2)}
             </SyntaxHighlighter>
           </div>

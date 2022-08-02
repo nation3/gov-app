@@ -45,7 +45,7 @@ const Process: NextPage = ({ markdown }: any) => {
       </div>
       <Card>
         <div
-          className="prose prose-h1:font-display prose-h1:font-normal prose-pre:bg-transparent max-w-none"
+          className="prose dark:prose-invert prose-h1:font-display prose-h1:font-normal prose-pre:bg-transparent max-w-none"
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
       </Card>
