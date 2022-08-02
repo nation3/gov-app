@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node-version: [14.x, 16.x, 18.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [12.x, 14.x, 16.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
@@ -21,7 +21,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: yarn.lock
-    - run: npm install yarn
-    - run: npx yarn install
-    - run: npx yarn lint
-    - run: npx yarn build
+    - run: npm install --global yarn
+    - run: echo $(yarn --version)
+    - run: yarn install
+    - run: yarn build
+    - run: yarn lint
