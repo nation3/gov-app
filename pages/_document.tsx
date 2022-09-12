@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class WebsiteDocument extends Document {
   render() {
