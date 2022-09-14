@@ -46,8 +46,8 @@ const Proposals: NextPage = ({ proposals }: any) => {
           <div className="w-32">
             <Select onChange={(e) => setOutcomeFilter(e.target.value)}>
               <option value="all">All outcomes</option>
-              <option value={true}>Approved</option>
-              <option value={false}>Rejected</option>
+              <option value="true">Approved</option>
+              <option value="false">Rejected</option>
             </Select>
           </div>
           <div className="w-48">
@@ -56,6 +56,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
               {proposalTypes.map((proposalType, i) => (
                 <option
                   key={i}
+                  // @ts-ignore
                   value={ProposalKinds[Object.keys(ProposalKinds)[i]]}
                 >
                   {proposalType}
