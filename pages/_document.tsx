@@ -18,6 +18,7 @@ class WebsiteDocument extends Document {
           <meta name="theme-color" content="#54c3ff" />
 
           <link rel="icon" href="/favicon.ico" />
+          <title>Nation3 governance dashboard</title>
         </Head>
 
         <body className="bg-white dark:bg-slate-800 dark:text-white">
