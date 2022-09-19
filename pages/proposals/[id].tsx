@@ -138,7 +138,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
               <div>
                 {/*@ts-ignore*/}
                 {proposalComponents(proposal)[proposal.content.kind]}
-                {proposal.votes && proposal.votes[0] && (
+                {proposal.votes && proposal.votes[0]?.winningChoices && (
                   <>
                     <h3 className="text-lg font-bold mt-4">Winning choices</h3>
                     {proposal.votes[0].winningChoices.map(
