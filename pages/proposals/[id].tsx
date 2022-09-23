@@ -153,7 +153,7 @@ const Proposal: NextPage = ({ proposal }: any) => {
                 )}
 
                 <div>
-                  {proposal.votes && (
+                  {proposal.votes && proposal.votes[0] && (
                     <>
                       <h3 className="text-lg font-bold mt-4">Votes</h3>
                       <p>
