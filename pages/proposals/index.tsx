@@ -78,7 +78,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
           {proposals.map((proposal: any) => {
             if (
               outcomeFilter !== 'all' &&
-              (outcomeFilter === 'true') !== proposal.votes?.[0].passed
+              (outcomeFilter === 'true') !== proposal.votes?.[0]?.passed
             )
               return
 
