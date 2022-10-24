@@ -15,10 +15,9 @@ const fetchProposal = async (id: number, retrieveMetadata?: boolean) => {
   }
   if (proposal.votes) {
     if (proposal.votes[0]) {
-      proposal.approved = proposal.votes[0]?.passed || null
-      if (proposal.approved === null) {
-        proposal.activeVote = true
-      }
+      proposal.approved = proposal.votes[0]?.passed
+    } else {
+      proposal.activeVote = true
     }
     if (
       proposal.content.kind !== 'meta' &&
