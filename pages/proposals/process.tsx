@@ -24,7 +24,7 @@ const Process: NextPage = ({ markdown }: any) => {
   }, [markdown])
 
   return (
-    <div className="flex flex-col w-full xl:max-w-5xl">
+    <div id="processPage" className="flex flex-col w-full xl:max-w-5xl">
       <div className="flex flex-row justify-between">
         <Link href="/proposals">
           <a className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
@@ -32,6 +32,7 @@ const Process: NextPage = ({ markdown }: any) => {
           </a>
         </Link>
         <a
+          id="viewOnGitHubLink"
           className="mr-2 mb-2 cursor-pointer text-n3blue hover:underline"
           href="https://github.com/nation3/gov"
           target="_blank"

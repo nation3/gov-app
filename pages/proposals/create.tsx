@@ -29,7 +29,7 @@ const CreateProposals: NextPage = () => {
   }, [proposalDraft])
 
   return (
-    <div className="flex flex-col w-full xl:max-w-5xl">
+    <div id="createPage" className="flex flex-col w-full xl:max-w-5xl">
       <div className="flex flex-row justify-between">
         <Link href="/proposals">
           <a className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
@@ -37,7 +37,7 @@ const CreateProposals: NextPage = () => {
           </a>
         </Link>
         <Link href="/proposals/process">
-          <a className="mr-2 mb-2 text-n3blue hover:underline">
+          <a id="governanceProcessLink" className="mr-2 mb-2 text-n3blue hover:underline">
             <div className="flex flex-row items-center gap-1">
               <span>Governance process</span>
             </div>

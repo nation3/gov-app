@@ -120,7 +120,7 @@ const proposalComponents = (proposal: any) => {
 
 const Proposal: NextPage = ({ proposal }: any) => {
   return (
-    <div className="flex flex-col w-full xl:max-w-5xl">
+    <div id="proposalPage" className="flex flex-col w-full xl:max-w-5xl">
       <Link href="/proposals">
         <h3 className="ml-2 mb-2 cursor-pointer text-n3blue hover:underline">
           ← All proposals
