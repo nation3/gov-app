@@ -30,7 +30,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
   const [enactedFilter, setEnactedFilter] = useState('all')
 
   return (
-    <div className="m-auto max-w-3xl xl:max-w-6xl p-4 md:p-0 mb-4">
+    <div id="proposalsPage" className="m-auto max-w-3xl xl:max-w-6xl p-4 md:p-0 mb-4">
       <div className="flex flex-col">
         <div className="flex-1 flex flex-row justify-between w-full mb-8">
           <h1 className="text-3xl text-left font-display dark:text-white">
@@ -38,13 +38,13 @@ const Proposals: NextPage = ({ proposals }: any) => {
           </h1>
           <Link href="/proposals/create">
             <Button>
-              <span className="font-display">Create a proposal</span>
+              <span id="createButton" className="font-display">Create a proposal</span>
             </Button>
           </Link>
         </div>
         <div className="flex justify-end gap-4">
           <div className="w-32">
-            <Select onChange={(e) => setOutcomeFilter(e.target.value)}>
+            <Select id="outcomeSelector" onChange={(e) => setOutcomeFilter(e.target.value)}>
               <option value="all">All outcomes</option>
               <option value="true">Approved</option>
               <option value="false">Rejected</option>
@@ -97,7 +97,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
 
             return (
               <Link href={`/proposals/${proposal.id}`} key={proposal.id}>
-                <div className="cursor-pointer h-full flex">
+                <div className="proposalCard cursor-pointer h-full flex">
                   <Card href="#" horizontal={true}>
                     <div className="h-full">
                       <div className="mb-2">
