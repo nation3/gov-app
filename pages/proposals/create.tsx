@@ -36,13 +36,16 @@ const CreateProposals: NextPage = () => {
             ← All proposals
           </a>
         </Link>
-        <Link href="/proposals/process">
-          <a className="mr-2 mb-2 text-n3blue hover:underline">
-            <div className="flex flex-row items-center gap-1">
-              <span>Governance process</span>
-            </div>
-          </a>
-        </Link>
+        <a
+          className="mr-2 mb-2 text-n3blue hover:underline"
+          target="_blank"
+          href="https://docs.nation3.org/jurisdiction/governance-process"
+          rel="noopener noreferrer"
+        >
+          <div className="flex flex-row items-center gap-1">
+            <span>Governance process</span>
+          </div>
+        </a>
       </div>
       <Card>
         <h3 className="font-bold text-2xl">Create a governance proposal</h3>
