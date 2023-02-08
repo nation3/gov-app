@@ -9,7 +9,7 @@ const fetchProposal = async (id: number, retrieveMetadata?: boolean) => {
   const proposal = await res.json()
   if (!proposal) return
 
-  if (retrieveMetadata && proposal.discussion) {
+  if (retrieveMetadata) {
     const meta = await fetchMeta(proposal.discussion)
     proposal.discussionMetadata = meta
   }
@@ -39,9 +39,10 @@ const fetchProposals = async (
   let noMoreProposals
   let id = startingIndex | 0
   do {
+    if (id === 29) continue
     const proposal = await fetchProposal(id, retrieveMetadata)
     if (proposal) {
-      if (Object.keys(proposal).length > 0) proposals.push(proposal)
+      proposals.push(proposal)
       id++
     } else {
       noMoreProposals = !proposal
