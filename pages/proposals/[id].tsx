@@ -226,7 +226,7 @@ export async function getStaticPaths() {
   let arr = []
   const proposals = await fetchProposals(0)
   for (const i in proposals) {
-    if (i === 29) continue
+    if (i === '29') continue
     arr.push(`/proposals/${i}`)
   }
   return {
