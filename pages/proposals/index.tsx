@@ -99,7 +99,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
               <Link href={`/proposals/${proposal.id}`} key={proposal.id}>
                 <div className="cursor-pointer h-full flex">
                   <Card href="#" horizontal={true}>
-                    <div className="h-full">
+                    <div className="h-full break-all">
                       <div className="mb-2">
                         <ProposalBadges proposal={proposal} />
                       </div>
