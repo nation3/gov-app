@@ -39,7 +39,10 @@ const fetchProposals = async (
   let noMoreProposals
   let id = startingIndex | 0
   do {
-    if (id === 29) continue
+    if (id === 29) {
+      id++
+      continue
+    }
     const proposal = await fetchProposal(id, retrieveMetadata)
     if (proposal) {
       proposals.push(proposal)
