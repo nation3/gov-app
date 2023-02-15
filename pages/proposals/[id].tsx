@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { fetchProposal, fetchProposals } from '../../lib/proposals'
 import { fetchTokenInfo } from '../../lib/tokens'
-import type { v1 } from '@nation3/gov-specs'
+import type { v1, v2 } from '@nation3/gov-specs'
 import { Button, Card, Badge } from 'flowbite-react'
 import { ExternalLinkIcon } from '@heroicons/react/outline'
 
@@ -96,15 +96,17 @@ const proposalComponents = (proposal: any) => {
       )}
     </>
   )
+  const pr = (proposal: any) => {
+    ;<>
+      <h3 className="text-lg font-bold">Pull request URI</h3>
+      <a className="link link-primary" target="_blank">
+        {proposal.content.prURI}
+      </a>
+    </>
+  }
   return {
-    meta: (
-      <>
-        <h3 className="text-lg font-bold">Pull request URI</h3>
-        <a className="link link-primary" target="_blank">
-          {proposal.content.prURI}
-        </a>
-      </>
-    ),
+    meta: pr(proposal),
+    law: pr(proposal),
     proclamation: (
       <>
         <h3 className="text-lg font-bold">Statement</h3>
@@ -138,17 +140,30 @@ const Proposal: NextPage = ({ proposal }: any) => {
               <div>
                 {/*@ts-ignore*/}
                 {proposalComponents(proposal)[proposal.content.kind]}
-                {proposal.votes && proposal.votes[0]?.winningChoices && (
+                {proposal.votes &&
+                  proposal.spec === 1 &&
+                  proposal.votes[0]?.winningChoices && (
+                    <>
+                      <h3 className="text-lg font-bold mt-4">
+                        Winning choices
+                      </h3>
+                      {proposal.votes[0].winningChoices.map(
+                        (choice: string, i: number) => (
+                          <>
+                            {i > 0 && ', '}
+                            {choice}
+                          </>
+                        )
+                      )}
+                    </>
+                  )}
+
+                {proposal.votes && proposal.spec === 2 && (
                   <>
-                    <h3 className="text-lg font-bold mt-4">Winning choices</h3>
-                    {proposal.votes[0].winningChoices.map(
-                      (choice: string, i: number) => (
-                        <>
-                          {i > 0 && ', '}
-                          {choice}
-                        </>
-                      )
-                    )}
+                    <h3 className="text-lg font-bold mt-4">Voting result</h3>
+                    {proposal.approved && proposal.enacted
+                      ? 'Approved'
+                      : 'Rejected'}
                   </>
                 )}
 

@@ -22,6 +22,7 @@ const fetchProposal = async (id: number, retrieveMetadata?: boolean) => {
     if (
       proposal.content.kind !== 'meta' &&
       proposal.content.kind !== 'proclamation' &&
+      proposal.content.kind !== 'law' &&
       proposal.approved
     ) {
       proposal.enacted = proposal.votes[1]?.passed || false

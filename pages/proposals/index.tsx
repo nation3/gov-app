@@ -8,20 +8,24 @@ import { useState } from 'react'
 
 const proposalTypes = [
   'Meta',
-  'Proclamation',
+  'Law',
   'Expense',
   'Parameter change',
   'Treasury management',
   'Custodial treasury management',
+  // v1
+  'Proclamation',
 ]
 
 declare enum ProposalKinds {
   Meta = 'meta',
-  Proclamation = 'proclamation',
+  Law = 'law',
   Expense = 'expense',
   ParameterChange = 'parameter-change',
   TreasuryManagement = 'treasury-management',
   CustodialTreasuryManagement = 'custodial-treasury-management',
+  // v1
+  Proclamation = 'proclamation',
 }
 
 const Proposals: NextPage = ({ proposals }: any) => {
@@ -88,6 +92,7 @@ const Proposals: NextPage = ({ proposals }: any) => {
             if (
               enactedFilter !== 'all' &&
               (proposal.content.kind === 'meta' ||
+                proposal.content.kind === 'law' ||
                 proposal.content.kind === 'proclamation' ||
                 (enactedFilter === 'true' && !proposal.votes?.[1]?.passed) ||
                 (enactedFilter === 'false' &&
