@@ -4,12 +4,12 @@ import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import json from 'react-syntax-highlighter/dist/cjs/languages/hljs/json'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import Link from 'next/link'
-import { v1 } from '@nation3/gov-specs'
+import { v2 } from '@nation3/gov-specs'
 import uiSchema from './uiSchema.json'
 import { useState, useEffect } from 'react'
 import { Button, Card, Badge, Label } from 'flowbite-react'
 
-let schema = v1
+let schema = v2
 /** An ID is required for a proposal to be valid, but the ID will only be assigned once merged into the repo */
 schema.properties.id.default = 1337
 
