@@ -565,10 +565,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@nation3/gov-specs@^1.0.0-beta7":
-  version "1.0.0-beta7"
-  resolved "https://registry.yarnpkg.com/@nation3/gov-specs/-/gov-specs-1.0.0-beta7.tgz#9dc465f62913d2c7338826931cc55207fc396fa9"
-  integrity sha512-X+yUbWrCCmM27G4bCvKt7mjH++BNn5UwNQ0ku7YfqZbJ9i1ywZb0cZOdTdK9gz5zLSkWhynVWONNHyrYzd9SSQ==
+"@nation3/gov-specs@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@nation3/gov-specs/-/gov-specs-2.0.0.tgz#dd611795ea082bd27032f5b6250ca95ebb91fe75"
+  integrity sha512-NgU60OJjejFxCZjyUDPF2P/wVKvY3I9DVq3x2Xj1xO5Y6wS6GrabdC68Wf3JJq4FesI7QFdXJeaJYlglQZ1qbQ==
 
 "@next/env@12.2.0":
   version "12.2.0"
