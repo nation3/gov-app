@@ -22,8 +22,8 @@ const etherscanLink = (address: string | any, alias?: string) => {
 }
 
 const agents = {
-  '0xD1EDE41DeB03A23CCB325312DE8e5BF240881f53': 'Nation3 DAO Agent',
-  '0x7fFf737ae9FdDD6E28Fe8B8F0F4dE69Bb8e7a885': 'Nation3 DAO Critical Agent',
+  '0x5afEb7F3259A25EB21287e3A917BeE3d4dE58dAf': 'Nation3 DAO Agent',
+  '0xE3554d26A6BE2D2DF942975BDD06B8513b29efD6': 'Nation3 DAO Critical Agent',
 }
 
 const renderExpense = (transfer: any, index: number) => {
